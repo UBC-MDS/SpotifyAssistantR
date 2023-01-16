@@ -1,10 +1,14 @@
 Package: SpotifyAssistantR
-Title: What the Package Does (One Line, Title Case)
+Title: Enrich Spotify User Experience
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    c(person("Jenit", "Jain", , , role = c("aut", "cre")),
+    person("Julie", "Song", , , role = c("aut", "cre")),
+    person("Caroline", "Tang", , , role = c("aut", "cre")),
+    person("Chester", "Wang", , , role = c("aut", "cre"))
+    )
+    
+Description: A Python package that enriches spotify users' music experience by allowing them to explore their listening trends via REST APIs implemented for Spotify developers..
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
