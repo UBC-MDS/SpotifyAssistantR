@@ -3,9 +3,9 @@ Title: Enrich Spotify User Experience
 Version: 0.0.0.9000
 Authors@R: 
     c(person("Jenit", "Jain", , "jenitjain10@gmail.com", role = c("aut", "cre")),
-    person("Julie", "Song", , "juliesong525@gmail.com", role = c("aut", "cre")),
-    person("Caroline", "Tang", , "tangmaomao2000@gmail.com", role = c("aut", "cre")),
-    person("Chester", "Wang", , "gengxingwang2019@u.northwestern.edu", role = c("aut", "cre"))
+    person("Julie", "Song", , "juliesong525@gmail.com", role = c("aut")),
+    person("Caroline", "Tang", , "tangmaomao2000@gmail.com", role = c("aut")),
+    person("Chester", "Wang", , "gengxingwang2019@u.northwestern.edu", role = c("aut"))
     )
 Description: A Python package that enriches spotify users' music experience by allowing them to explore their listening trends via REST APIs implemented for Spotify developers..
 License: MIT + file LICENSE
