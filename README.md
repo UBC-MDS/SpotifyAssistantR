@@ -6,48 +6,54 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of SpotifyAssistantR is to …
+A R package that is built on top of spotifyr package with more practical functionalities to enhances spotify users' experience. Implemented via REST APIs
+
+In specific, our aim is to create functions that combine multiple requests from the existing spotifyR package and provide supplementary insights for Spotify users. 
 
 ## Installation
 
 You can install the development version of SpotifyAssistantR like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github('UBC-MDS/SpotifyAssistantR')
 ```
 
-## Example
+## Dependencies
+
+We use spotifyR package to authenticate (getting and refreshing access tokens), acquire data and get user-specific information.
+Install spotifyR with:
+
+```r
+install.packages('spotifyr')
+```
+
+## Environment Setup
+
+To use the package we require you to supplement the client id and client secret in order to acquire token:
+
+```r
+Sys.setenv(SPOTIFY_CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx')
+Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
+
+access_token <- get_spotify_access_token()
+```
+This must be provided after loading the spotifyr library and before using the package. 
+
+## Usage
 
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(SpotifyAssistantR)
-## basic example code
+get_new_releases_by_continent(country_code='Asia', n_limit=3)
+# [[1]]
+# [1] "Renegade"
+# 
+# [[2]]
+# [1] "LANDER"
+# 
+# [[3]]
+# [1] "Dreaming of You"
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+More usage examples goes here
