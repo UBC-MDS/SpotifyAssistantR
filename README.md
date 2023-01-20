@@ -6,9 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-A R package that is built on top of spotifyr package with more practical functionalities to enhances spotify users' experience. Implemented via REST APIs
+In this project, we aim to create a package in R that builds on top of the spotifyr package and offers more useful features to improve the Spotify user experience. 
 
-In specific, our aim is to create functions that combine multiple requests from the existing spotifyR package and provide supplementary insights for Spotify users. 
+This is achieved by utilizing REST APIs to implement the functions. Additionally, our package will combine multiple requests from the spotifyR package to provide additional insights for Spotify users.
 
 ## Installation
 
