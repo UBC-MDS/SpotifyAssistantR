@@ -16,7 +16,7 @@ If you want to make a bigger change, it's a good idea to first file an issue and
 If you’ve found a bug, please file an issue that illustrates the bug with a minimal 
 [reprex](https://www.tidyverse.org/help/#reprex) (this will also help you write a unit test, if needed).
 
-### Pull request process
+## Pull request process
 
 *   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("UBC-MDS/SpotifyAssistantR", fork = TRUE)`.
 
