@@ -1,6 +1,6 @@
 # Contributing to SpotifyAssistantR
 
-This outlines how to propose a change to SpotifyAssistantR. 
+This outlines how to propose a change to SpotifyAssistantR. Contributions are welcome, and they are greatly appreciated! Every little bit helps, and credit will always be given.
 For more detailed info about contributing to this, and other tidyverse packages, please see the
 [**development contributing guide**](https://rstd.io/tidy-contrib). 
 
@@ -13,8 +13,28 @@ You can find the `.R` file that generates the `.Rd` by reading the comment in th
 ## Bigger changes
 
 If you want to make a bigger change, it's a good idea to first file an issue and make sure someone from the team agrees that it’s needed. 
-If you’ve found a bug, please file an issue that illustrates the bug with a minimal 
-[reprex](https://www.tidyverse.org/help/#reprex) (this will also help you write a unit test, if needed).
+
+### Report bugs
+If you’ve found a bug, please first check if there is already an open issue for the bug. If there is, please add your comments to the issue to minimize redundancy. Otherwise, please include the following information when reporting the bug:
+
+*   Your operating system name and version.
+*   Any details about your local setup that might be helpful in troubleshooting.
+*   Detailed steps to reproduce the bug.
+
+If possible, please include in the issue a minimal [reprex](https://www.tidyverse.org/help/#reprex) (this will also help you write a unit test, if needed).
+
+### Fix bugs
+Look through the GitHub issues for bugs. Anything tagged with "bug" and "help wanted" is open to whoever wants to implement it.
+
+### Implement features
+Look through the GitHub issues for features. Anything tagged with "enhancement" and "help wanted" is open to whoever wants to implement it.
+
+### Submit Feedback
+If you are proposing a feature:
+
+*   Explain in detail how it would work.
+*   Keep the scope as narrow as possible, to make it easier to implement.
+*   Remember that this is a volunteer-driven project, and that contributions are welcome :)
 
 ## Pull request process
 
