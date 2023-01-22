@@ -48,3 +48,28 @@ get_users_top_genres <- function() {
 get_playlists_songs <- function(playlists = NULL) {
 
 }
+
+
+#' Creates a playlist of recommended songs.
+#'
+#' A wrapper function that first retrieves a user's top 3 artists,
+#' then uses this information to generate a list of 10 recommended songs.
+#' If the user does not have any top artist information, then genre seeds
+#' are used instead.
+#' A new playlist is created for the user, which contains the
+#' recommended songs.
+#' Prints a url link to the new playlist on Spotify.
+#'
+#' @param playlist_name The name of the new playlist, a string. Defaults to
+#' "Recommended Songs" with the current date.
+#' @param num_songs The number of new songs to generate. Must be an integer
+#' between 1 and 100 (inclusive).
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' get_song_recommendations()
+get_song_recommendations <- function(playlist_name = None, num_songs = 10) {
+
+}
