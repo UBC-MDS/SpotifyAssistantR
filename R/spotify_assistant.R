@@ -20,17 +20,6 @@ get_new_releases_by_continent <- function(country_code, n_limit) {
 
 }
 
-#' Finds the top 5 genres from a user's saved tracks
-#'
-#' A wrapper function that goes through a user's entire saved library.
-#' For each song, it checks all the artist involved and the genre of music
-#' they compose. It returns the top 5 most commonly occurring genres.
-#'
-#' @return Character vector containing the top 5 genres of music in the User's saved library
-get_users_top_genres <- function() {
-
-}
-
 #' Get all the songs from a user's playlists
 #'
 #' A wrapper function that gets the names of all songs contained in one or more
