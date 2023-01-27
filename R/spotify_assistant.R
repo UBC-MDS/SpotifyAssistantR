@@ -1,7 +1,3 @@
-library(spotifyr)
-library(tidyverse)
-library(dplyr)
-
 #' Get new releases by continent
 #'
 #' This is a helper function that allows users to get new releases
