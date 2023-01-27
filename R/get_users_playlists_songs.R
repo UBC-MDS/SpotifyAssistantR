@@ -2,7 +2,7 @@
 #'
 #' @param authorization an authorization token for the Spotify API
 #' @return dataframe containing the names and IDs of playlists
-#' @import spotifyr get_my_playlists
+#' @importFrom spotifyr get_my_playlists
 
 get_all_playlists <- function(authorization) {
 
@@ -37,7 +37,8 @@ get_all_playlists <- function(authorization) {
 #' @param all_playlists a dataframe containing names and IDs of playlists
 #' @param playlist_names a character vector containing the playlist names, defaults to all
 #' @return dataframe containing the names and IDs of playlists
-#' @import dplyr filter
+#' @importFrom dplyr filter
+#' @importFrom dplyr select
 #' @export
 
 filter_playlists <- function(all_playlists, playlist_names = NULL) {
@@ -47,13 +48,13 @@ filter_playlists <- function(all_playlists, playlist_names = NULL) {
   } else if (is.null(playlist_names)) {
     filtered_playlists <- all_playlists |>
       dplyr::filter(public == TRUE | collaborative == TRUE) |>
-      select(name, id)
+      dplyr::select(name, id)
   } else {
     # if not null then filter the names
     filtered_playlists <- all_playlists |>
       dplyr::filter(public == TRUE | collaborative == TRUE) |>
       dplyr::filter(name %in% playlist_names) |>
-      select(name, id)
+      dplyr::select(name, id)
   }
   return(filtered_playlists)
 }
@@ -62,7 +63,7 @@ filter_playlists <- function(all_playlists, playlist_names = NULL) {
 #'
 #' @param playlist_id a character string containing the ID for a Spotify playlist
 #' @return character vector containing song names
-#' @import spotifyr get_playlist_tracks
+#' @importFrom spotifyr get_playlist_tracks
 
 get_one_playlist_songs <- function(playlist_id) {
   all_songs <- c()
@@ -94,13 +95,13 @@ get_one_playlist_songs <- function(playlist_id) {
 #' Get all the songs from a user's playlists
 #'
 #' A wrapper function that gets the names of all songs contained in one or more
-#' of a user's owned and saved playlists. By default, all songs from all playlists
-#' are returned, but playlists can also be specified by name.
+#' of a user's owned and saved public or collaborative playlists.
+#' By default, all songs from valid playlists are returned,
+#' but playlists can also be specified by name.
 #'
 #' @param playlist_names a character vector containing the playlist names, defaults to all
 #' @return list containing a vector of song names from the playlists
-#' @import spotifyr get_spotify_authorization_code
-#' @import purrr map
+#' @importFrom spotifyr get_spotify_authorization_code
 #' @export
 #'
 #' @examples
@@ -118,11 +119,15 @@ get_playlists_songs <- function(playlist_names = NULL) {
   # filter playlists (rows)
   filtered_playlists <- filter_playlists(all_playlists, playlist_names = NULL)
 
+  if (nrow(filtered_playlists) == 0) {
+    stop('No playlists to get songs for.')
+  }
+
   # for each playlist, get songs
   playlists_songs <- list()
 
   for (i in 1:nrow(filtered_playlists)) {
-    print(paste('getting songs for', filtered_playlists$name[i]))
+    print(paste('Getting songs for', filtered_playlists$name[i]))
     playlists_songs[[filtered_playlists$name[i]]] <- get_one_playlist_songs(
       playlist_id = filtered_playlists$id[i]
     )
