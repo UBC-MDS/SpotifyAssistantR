@@ -18,7 +18,21 @@ get_map <- function() {
   return(cc_map)
   
 }
-  
+
+
+#' Check if the country code is valid
+#'
+#' @param code country code to look up
+#' @return If spotify is available in the country or not
+region_not_available <- function(code) {
+  americas_na = c("AI", "AW", "BM", "BQ", "BV", "KY", "CU", "FK", "GF", "GL", "GP", "MQ", "MS", "PR", "BL", "MF", "PM", "SX", "GS", "TC", "VG", "VI")
+  asia_na = c("AF", "CN", "IR", "KP", "MM", "SY", "TM", "YE")
+  oceania_na = c("AX", "FO", "GI", "GG", "VA", "IM", "JE", "RU", "SJ")
+  europe_na = c("AS", "CX", "CC", "CK", "PF", "GU", "HM", "NC", "NU", "NF", "MP", "PN", "TK", "UM", "WF")
+  africa_na = c("IO", "CF", "ER", "TF", "YT", "RE", "SH", "SO", "SS", "SD", "EH")
+  return(code %in% americas_na | code %in% asia_na | code %in% oceania_na | code %in% europe_na | code %in% africa_na)
+}
+
 
 #' Get all releases by continent
 #'
@@ -43,10 +57,17 @@ get_releases <- function(continent, limit){
   all_releases <- list()
   
   for(country_code in cc_map[[continent]]){
-    if(is_valid_code(country_code)) {
-      new_releases <- spotifyr::get_new_releases(country_code)
+    # if(!region_not_available(country_code)) {
+    #   new_releases <- spotifyr::get_new_releases(country_code)
+    #   all_releases[[country_code]] <- new_releases
+    # }
+    if(region_not_available(country_code)) { next }
+    tryCatch({
+      new_releases <- get_new_releases(country_code)
       all_releases[[country_code]] <- new_releases
-    }
+    }, error=function(e){
+      print(country_code)
+    })
     
   }
   
