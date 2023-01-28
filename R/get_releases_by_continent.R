@@ -39,7 +39,6 @@ region_not_available <- function(code) {
 #' @param continent continent name as a String
 #' @param limit number of releases to extract
 #' @return a list containing all info of selected new releases
-#' @importFrom spotifyr get_my_playlists
 get_releases <- function(continent, limit){
   
   cc_map <- get_map()
@@ -57,14 +56,10 @@ get_releases <- function(continent, limit){
   all_releases <- list()
   
   for(country_code in cc_map[[continent]]){
-    # if(!region_not_available(country_code)) {
-    #   new_releases <- spotifyr::get_new_releases(country_code)
-    #   all_releases[[country_code]] <- new_releases
-    # }
     if(region_not_available(country_code)) { next }
     tryCatch({
       new_releases <- get_new_releases(country_code)
-      all_releases[[country_code]] <- new_releases
+      all_releases <- c(all_releases, new_releases) 
     }, error=function(e){
       print(country_code)
     })
@@ -74,6 +69,16 @@ get_releases <- function(continent, limit){
   return(all_releases)
 }
 
+
+#' Get names of new releases by continent
+#'
+#' @param continent : continent name (i.e. Asia, Europe, Oceania, Americas, Africa)
+#' @param limit : max number of albums to extract
+#' @return A list of titles of new releases in String from the corresponding continent
+get_new_releases_by_continent <- function(continent, limit) {
+  all_releases <- get_releases(continent, limit)
+  return(all_releases$name[1:limit])
+}
 
 
 
