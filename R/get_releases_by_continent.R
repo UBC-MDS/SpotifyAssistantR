@@ -1,7 +1,7 @@
 #' Get the country list by continent
 #'
 #' @return A list containing all countries, by continent name
-
+#' @export
 get_map <- function() {
   
   # Loading continent to country map from github
