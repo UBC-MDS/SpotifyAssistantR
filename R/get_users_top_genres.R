@@ -1,21 +1,14 @@
 # Sys.setenv(SPOTIFY_CLIENT_ID = '74652d1e1b664c34bacea50da044afc2')
 # Sys.setenv(SPOTIFY_CLIENT_SECRET = 'a76de7b1d254428e8200ea9c74ad3b77')
 
-# get authorization code (saves as object named authorization)
-authorization <- spotifyr::get_spotify_authorization_code(
-  client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
-  client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
-  scope = "playlist-read-private playlist-read-collaborative playlist-modify-private user-library-read user-top-read playlist-modify-private playlist-modify-public"
-)
-
-
 #' Get the user's saved tracks
 #'
 #' A function that iteratively calls the Spotify API to get a user's
 #' saved tracks and the metadata pertaining to each track.
-#'
+#' 
+#' @param authorization an authorization token for the Spotify API
 #' @return A dataframe containing metadata of the user's saved tracks.
-get_saved_tracks <- function() {
+get_saved_tracks <- function(authorization) {
   saved_tracks <- data.frame()
   offset = 0
   tracks <- spotifyr::get_my_saved_tracks(limit = 50,
@@ -24,11 +17,11 @@ get_saved_tracks <- function() {
 
   while (length(tracks) != 0) {
     saved_tracks <- rbind(saved_tracks, tracks)
+    break
     offset <- offset + nrow(tracks)
     tracks <- spotifyr::get_my_saved_tracks(limit = 50,
                                             offset = offset,
                                             authorization = authorization)
-    break
   }
   saved_tracks
 }
@@ -38,7 +31,8 @@ get_saved_tracks <- function() {
 #' A function that iteratively calls the Spotify API #' to get
 #' information on all the artists present in a list of tracks.
 #'
-#' @param saved_tracks A dataframe containing metadata of the user's saved tracks.
+#' @param saved_tracks A dataframe containing metadata of 
+#'                     the user's saved tracks.
 #' @return A list containing metadata of all the artists.
 #' @examples get_all_artists(dataframe_of_tracks)
 get_all_artists <- function(saved_tracks){
@@ -85,8 +79,26 @@ get_top_genres <- function(artist_information) {
 #'
 #' @return Character vector containing the top 5 genres of music in the User's saved library.
 get_users_top_genres <- function() {
+  
+  # get authorization code
+  authorization <- spotifyr::get_spotify_authorization_code(
+    scope = "playlist-read-private \
+             playlist-read-collaborative \
+             playlist-modify-private \
+             user-library-read \
+             user-top-read \
+             playlist-modify-private \
+             playlist-modify-public")
+  
+  # Get the tracks saved in the user's "Your Music" library
   saved_tracks <- get_saved_tracks()
+
+  # Get information on all artists associated with the saved songs
   artist_information <- get_all_artists(saved_tracks)
+
+  # Get the top genres of the artists
   genres <- get_top_genres(artist_information)
-  names(sort(table(unlist(genres)),decreasing=TRUE)[1:5])
+
+  # names(sort(table(unlist(genres)),decreasing=TRUE)[1:5])
+  artist_information
 }

@@ -1,7 +1,3 @@
-library(spotifyr)
-library(tidyverse)
-library(dplyr)
-
 #' Get new releases by continent
 #'
 #' This is a helper function that allows users to get new releases
@@ -35,6 +31,15 @@ get_new_releases_by_continent <- function(country_code, n_limit) {
 #' get_playlists_songs('night drives')
 #' get_playlists_songs(c('night drives', 'boss rush'))
 get_playlists_songs <- function(playlists = NULL) {
+}
+#' Finds the top 5 genres from a user's saved tracks
+#'
+#' A wrapper function that goes through a user's entire saved library.
+#' For each song, it checks all the artist involved and the genre of music
+#' they compose. It returns the top 5 most commonly occurring genres.
+#'
+#' @return Character vector containing the top 5 genres of music in the User's saved library
+get_users_top_genres <- function() {
 
 }
 
