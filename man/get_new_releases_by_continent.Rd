@@ -31,8 +31,10 @@ smaller than the total number of all releases available, it returns
 the first n_limit releases by default
 }
 \examples{
+\dontrun{
 get_new_releases_by_continent('Asia', 5)
 get_new_releases_by_continent('Americas', 1)
+}
 get_new_releases_by_continent('Asia', 10)
 get_new_releases_by_continent('Europe', 15)
 }

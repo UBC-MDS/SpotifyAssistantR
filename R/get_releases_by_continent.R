@@ -1,14 +1,15 @@
 #' Get the country list by continent
 #'
 #' @return A list containing all countries, by continent name
+#' @importFrom utils read.csv
 #' @export
 get_map <- function() {
-  
+
   # Loading continent to country map from github
   df <- read.csv("https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv")
   cc_map <- list()
   rownames(df) <- NULL
-  
+
   # Builds the map
   for (i in 1:nrow(df)) {
     if(is.na(df[i,'alpha.2']) | df[i,'alpha.2'] == 'AQ'){
@@ -16,9 +17,9 @@ get_map <- function() {
     }
     cc_map[[df[i,'region']]] <- c(cc_map[[df[i,'region']]], df[i,'alpha.2'])
   }
-  
+
   return(cc_map)
-  
+
 }
 
 
@@ -44,36 +45,36 @@ region_not_available <- function(code) {
 #' @return a list containing all info of selected new releases
 #' @importFrom spotifyr get_new_releases
 get_releases <- function(continent, limit){
-  
+
   cc_map <- get_map()
-  
+
   if(limit <= 0){
     stop("Limit parameter invalid")
   }
-  
+
   if(!continent %in% names(cc_map)){
     stop("Continent parameter invalid. Check for typos")
   }
-  
+
   cat("-- Loading new releases in ", continent, ", this may take a while...", "\n")
-  
+
   all_releases <- list()
-  
+
   # Acquires the release info by using the spotifyr package
   for(country_code in cc_map[[continent]]){
     # If country does not have spotify, skip
     if(region_not_available(country_code)) { next }
-    
+
     # Otherwise, append info to the existing list
     tryCatch({
       new_releases <- get_new_releases(country_code)
-      all_releases <- c(all_releases, new_releases) 
+      all_releases <- c(all_releases, new_releases)
     }, error=function(e){
       print(country_code)
     })
-    
+
   }
-  
+
   return(all_releases)
 }
 
@@ -84,10 +85,13 @@ get_releases <- function(continent, limit){
 #' @param limit : max number of albums to extract
 #' @return A list of titles of new releases in String from the corresponding continent
 #' @export
-#' 
+#'
 #' @examples
+#' \dontrun{
 #' get_new_releases_by_continent('Asia', 5)
 #' get_new_releases_by_continent('Americas', 1)
+#' }
+
 get_new_releases_by_continent <- function(continent, limit) {
   all_releases <- get_releases(continent, limit)
   return(sample(all_releases$name, limit))

@@ -30,9 +30,11 @@ of a user's owned and saved playlists. By default, all songs from all playlists
 are returned, but playlists can also be specified by name.
 }
 \examples{
+\dontrun{
 get_playlists_songs()
 get_playlists_songs('night drives')
 get_playlists_songs(c('night drives', 'boss rush'))
+}
 get_playlists_songs()
 get_playlists_songs('night drives')
 get_playlists_songs(c('night drives', 'boss rush'))

@@ -17,6 +17,3 @@ A list containing metadata of all the artists.
 A function that iteratively calls the Spotify API #' to get
 information on all the artists present in a list of tracks.
 }
-\examples{
-get_all_artists(dataframe_of_tracks)
-}
