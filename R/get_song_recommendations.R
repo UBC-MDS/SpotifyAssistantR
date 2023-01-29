@@ -43,8 +43,9 @@ extract_artist_id <- function(artists){
 #' @export
 
 get_genre_seeds <- function() {
-  all_genres <- c('classical', 'acoustic', 'country', 'guitar', 'hip-hop')
-  all_genres
+  all_genres <- get_all_genres()
+  genre_seeds <- sample(all_genres, 5, replace = FALSE)
+  genre_seeds
 }
 
 #' Get New Songs
@@ -150,7 +151,6 @@ get_song_recommendations <- function(playlist_name = NULL, num_songs = 10) {
   playlist_url <- new_playlist[[1]]
   playlist_id <- new_playlist[[2]]
 
-  #add_songs(playlist_id, recommended_songs)
   spotifyr::add_tracks_to_playlist(playlist_id, recommended_songs)
 
   print(paste("Here is a link to the new playlist:", playlist_url))
