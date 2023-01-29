@@ -8,9 +8,9 @@
 #' @param authorization The authorization token or code for the user's account.
 #'
 #' @return A data frame containing artist information.
+#' @importFrom spotifyr get_my_top_artists_or_tracks
 #' @export
-#'
-#' @examples
+
 get_top_artists <- function(authorization = get_spotify_authorization_code()){
   user_artists <- spotifyr::get_my_top_artists_or_tracks(limit=3,
                                                          time_range='short_term',
@@ -25,8 +25,7 @@ get_top_artists <- function(authorization = get_spotify_authorization_code()){
 #'
 #' @return A vector of artist IDs.
 #' @export
-#'
-#' @examples
+
 extract_artist_id <- function(artists){
   if (is.null(artists$id)) {
     return(list())
@@ -42,8 +41,7 @@ extract_artist_id <- function(artists){
 #'
 #' @return A list of 5 genre seeds
 #' @export
-#'
-#' @examples
+
 get_genre_seeds <- function() {
   all_genres <- c('classical', 'acoustic', 'country', 'guitar', 'hip-hop')
   all_genres
@@ -60,9 +58,9 @@ get_genre_seeds <- function() {
 #' Must be between 1 and 100 (inclusive).
 #'
 #' @return A vector of track uri's for identifying specific tracks.
+#' @importFrom spotifyr get_recommendations
 #' @export
-#'
-#' @examples
+
 get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spotify_access_token()){
   stopifnot(num_songs <= 100)
   stopifnot(num_songs > 0)
@@ -91,9 +89,10 @@ get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spot
 #' @param playlist_name The name of the new playlist.
 #'
 #' @return A list containing the url and playlist id for the new playlist.
+#' @importFrom spotifyr get_my_profile
+#' @importFrom spotifyr create_playlist
 #' @export
-#'
-#' @examples
+
 create_playlist <- function(playlist_name, authorization=get_spotify_authorization_code()){
   if (is.null(playlist_name)) {
     current_date <- Sys.Date()
@@ -127,7 +126,7 @@ create_playlist <- function(playlist_name, authorization=get_spotify_authorizati
 #' @param num_songs The number of new songs to generate. Must be an integer
 #' between 1 and 100 (inclusive).
 #'
-#' @return
+#' @importFrom spotifyr add_tracks_to_playlist
 #' @export
 #'
 #' @examples
