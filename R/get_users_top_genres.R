@@ -30,7 +30,7 @@ get_saved_tracks <- function(authorization) {
 #' @param saved_tracks A dataframe containing metadata of
 #'                     the user's saved tracks.
 #' @return A list containing metadata of all the artists.
-#' @examples get_all_artists(dataframe_of_tracks)
+
 get_all_artists <- function(saved_tracks){
   artists <- c()
   artist_information <- list()
@@ -56,7 +56,6 @@ get_all_artists <- function(saved_tracks){
 #'
 #' @param artist_information A list containing metadata of all the artists.
 #' @return A vector containing the top 5 occurrences.
-#' @examples get_top_genres(artist_information)
 get_top_genres <- function(artist_information) {
   genres <- list()
   for(info in artist_information){

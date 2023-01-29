@@ -16,6 +16,3 @@ A vector containing the top 5 occurrences.
 A function that that iterates through a list of genres, counts the number of
 occurrences of each genres and returns the top 5 occurrences.
 }
-\examples{
-get_top_genres(artist_information)
-}

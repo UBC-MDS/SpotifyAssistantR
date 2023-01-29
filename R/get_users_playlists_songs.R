@@ -47,14 +47,14 @@ filter_playlists <- function(all_playlists, playlist_names = NULL) {
     stop('playlist_names must be a character vector')
   } else if (is.null(playlist_names)) {
     filtered_playlists <- all_playlists |>
-      dplyr::filter(public == TRUE | collaborative == TRUE) |>
-      dplyr::select(name, id)
+      dplyr::filter(.data$public == TRUE | .data$collaborative == TRUE) |>
+      dplyr::select(.data$name, .data$id)
   } else {
     # if not null then filter the names
     filtered_playlists <- all_playlists |>
-      dplyr::filter(public == TRUE | collaborative == TRUE) |>
-      dplyr::filter(name %in% playlist_names) |>
-      dplyr::select(name, id)
+      dplyr::filter(.data$public == TRUE | .data$collaborative == TRUE) |>
+      dplyr::filter(.data$name %in% playlist_names) |>
+      dplyr::select(.data$name, .data$id)
   }
   return(filtered_playlists)
 }
@@ -105,9 +105,11 @@ get_one_playlist_songs <- function(playlist_id) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' get_playlists_songs()
 #' get_playlists_songs('night drives')
 #' get_playlists_songs(c('night drives', 'boss rush'))
+#' }
 get_playlists_songs <- function(playlist_names = NULL) {
 
   # get authorization code
