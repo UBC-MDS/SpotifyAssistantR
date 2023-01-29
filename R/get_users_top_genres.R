@@ -1,6 +1,3 @@
-# Sys.setenv(SPOTIFY_CLIENT_ID = '74652d1e1b664c34bacea50da044afc2')
-# Sys.setenv(SPOTIFY_CLIENT_SECRET = 'a76de7b1d254428e8200ea9c74ad3b77')
-
 #' Get the user's saved tracks
 #'
 #' A function that iteratively calls the Spotify API to get a user's
