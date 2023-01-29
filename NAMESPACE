@@ -3,6 +3,7 @@
 export(create_playlist)
 export(extract_artist_id)
 export(filter_playlists)
+export(get_all_genres)
 export(get_genre_seeds)
 export(get_map)
 export(get_new_releases_by_continent)
