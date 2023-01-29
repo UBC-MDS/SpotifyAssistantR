@@ -6,9 +6,6 @@
 \usage{
 get_genre_seeds()
 }
-\arguments{
-\item{authorization}{The authorization token or code for the user's account}
-}
 \value{
 A list of 5 genre seeds
 }

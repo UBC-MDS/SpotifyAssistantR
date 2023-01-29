@@ -37,8 +37,6 @@ extract_artist_id <- function(artists){
 
 #' Get Genre Seeds
 #'
-#' @param authorization The authorization token or code for the user's account
-#'
 #' @return A list of 5 genre seeds
 #' @export
 
