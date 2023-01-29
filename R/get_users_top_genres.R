@@ -5,7 +5,7 @@
 #'
 #' A function that iteratively calls the Spotify API to get a user's
 #' saved tracks and the metadata pertaining to each track.
-#' 
+#'
 #' @param authorization an authorization token for the Spotify API
 #' @return A dataframe containing metadata of the user's saved tracks.
 get_saved_tracks <- function(authorization) {
@@ -17,7 +17,6 @@ get_saved_tracks <- function(authorization) {
 
   while (length(tracks) != 0) {
     saved_tracks <- rbind(saved_tracks, tracks)
-    break
     offset <- offset + nrow(tracks)
     tracks <- spotifyr::get_my_saved_tracks(limit = 50,
                                             offset = offset,
@@ -31,7 +30,7 @@ get_saved_tracks <- function(authorization) {
 #' A function that iteratively calls the Spotify API #' to get
 #' information on all the artists present in a list of tracks.
 #'
-#' @param saved_tracks A dataframe containing metadata of 
+#' @param saved_tracks A dataframe containing metadata of
 #'                     the user's saved tracks.
 #' @return A list containing metadata of all the artists.
 #' @examples get_all_artists(dataframe_of_tracks)
@@ -68,7 +67,7 @@ get_top_genres <- function(artist_information) {
       genres <- append(genres, info$genres)
     }
   }
-  genres
+  names(sort(table(unlist(genres)),decreasing=TRUE)[1:5])
 }
 
 #' Finds the top 5 genres from a user's saved tracks
@@ -79,9 +78,11 @@ get_top_genres <- function(artist_information) {
 #'
 #' @return Character vector containing the top 5 genres of music in the User's saved library.
 get_users_top_genres <- function() {
-  
+
   # get authorization code
   authorization <- spotifyr::get_spotify_authorization_code(
+    client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
+    client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
     scope = "playlist-read-private \
              playlist-read-collaborative \
              playlist-modify-private \
@@ -89,16 +90,13 @@ get_users_top_genres <- function() {
              user-top-read \
              playlist-modify-private \
              playlist-modify-public")
-  
+
   # Get the tracks saved in the user's "Your Music" library
-  saved_tracks <- get_saved_tracks()
+  saved_tracks <- get_saved_tracks(authorization)
 
   # Get information on all artists associated with the saved songs
   artist_information <- get_all_artists(saved_tracks)
 
   # Get the top genres of the artists
   genres <- get_top_genres(artist_information)
-
-  # names(sort(table(unlist(genres)),decreasing=TRUE)[1:5])
-  artist_information
 }
