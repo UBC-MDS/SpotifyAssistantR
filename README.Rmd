@@ -18,9 +18,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-In this project, we aim to create a package in R that builds on top of the spotifyr package and offers more useful features to improve the Spotify user experience. 
+In this project, we aim to create a package in R that builds on top of the spotifyR 
+package and offers more useful features to improve the Spotify user experience. 
 
-This is achieved by utilizing REST APIs to implement the functions. Additionally, our package will combine multiple requests from the spotifyR package to provide additional insights for Spotify users.
+This is achieved by utilizing REST APIs to implement the functions. 
+Although the spotifyR package consists of wrapper functions for the Spotify REST APIs, our package will combine multiple requests from the spotifyR package to provide additional insights for Spotify users.
 
 ## Authors
 - Caroline Tang
@@ -40,14 +42,18 @@ devtools::install_github('UBC-MDS/SpotifyAssistantR')
 
 ## Dependencies
 
-We use spotifyR package to authenticate (getting and refreshing access tokens), acquire data and get user-specific information.
-Install spotifyR with:
-
-```r
-install.packages('spotifyr')
-```
+R (>=4.1.0),
+- spotifyr
+- dplyr
 
 ## Environment Setup
+
+Using this package requires Spotify and Spotify Developer accounts, which you can create on the
+[Spotify Developer website](https://developer.spotify.com/dashboard/login). After 
+creating an account, you will need to create an app to obtain the necessary client ID and secret
+in order to authenticate into the Spotify API.
+
+![]
 
 To use the package we require you to supplement the client id and client secret in order to acquire token:
 
