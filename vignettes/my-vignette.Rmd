@@ -26,11 +26,11 @@ This package uses wrapper functions from the Spotify API and `SpotifyR` and comb
 4. Getting new song recommendations based on the user's top artists
 
 ## Initial Setup
-In order to use the `SpofityAssistantR` package, the user must have a Spotify account, as well as a Spotify Developer Account.
+In order to use the `SpotifyAssistantR` package, the user must have a Spotify account, as well as a Spotify Developer Account.
 [Click here](https://developer.spotify.com/dashboard/login) to create a Spotify Developer account.
 
 ### Client ID and Secret
-Once the developer acount has been made, login and go to the user `Dashboard`. 
+Once the developer account has been made, log in and go to the user `Dashboard`. 
 Click on the green `CREATE AN APP` button and name the new app.
 Once the app has been created, the user will be immediately redirected to the app overview page.
 On this page, directly under the name of the app, there are some pieces of information.
@@ -59,11 +59,14 @@ Click on the green `EDIT SETTINGS` button on the right side of the page. Add the
 Now the setup process is complete.
 
 ## Getting New Releases by Continent
-The following function will return one album from the Americas (i.e. North and South America)
+The following function will return one album from the Americas (i.e. North and South America).
 
 ```{r, eval=FALSE}
-get_new_releases_by_continent('Americas', 1)
+get_new_releases_by_continent(continent = 'Americas', limit = 1)
 ```
+
+Other continents that can be specified are: 'Asia', 'Europe', 'Oceania', and 'Africa'. The
+number of albums to be returned can also be increased by increasing the `limit`.
 
 ## Getting User Top Genres
 The following function will return the user's top genres based on their listening trends:
@@ -73,14 +76,25 @@ get_users_top_genres()
 ```
 
 ## Getting User Playlists and Tracks
-The following function will return the user's playlists and tracks:
+The following function will return the all user's saved playlists and tracks:
 
 ```{r, eval=FALSE}
 get_playlists_songs()
 ```
 
+Playlists can also be specified using the `playlist_names` argument, like this:
+
+```{r, eval=FALSE}
+# for one playlist
+get_playlists_songs(playlist_names = 'bops')
+
+# for more than one playlist
+get_playlists_songs(playlist_names = c('bops', 'night drives'))
+```
+
+
 ## Getting User Song Recommendations
-The following function will create a new playlist on Spotify, containing recommended songs for the user based on the user's top artists. It is possible to specify a name for the new playlist using the `playlist_name` arugment. If this is left blank, the playlist will simply be named "Recommended Songs" followed by the current date. 
+The following function will create a new playlist on Spotify, containing recommended songs for the user based on the user's top artists. It is possible to specify a name for the new playlist using the `playlist_name` argument. If this is left blank, the playlist will simply be named "Recommended Songs" followed by the current date. 
 The user can also specify the number of songs to return in the playlist using the `num_songs` argument. The default is 10 songs.
 
 ```{r, eval=FALSE}
