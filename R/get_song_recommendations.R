@@ -86,7 +86,7 @@ create_rec_playlist <- function(playlist_name){
     playlist_name <- paste(current_date, "Recommended Songs")
   }
 
-  user_id <- spotifyr::get_my_profile(authorization)$id
+  user_id <- spotifyr::get_my_profile(authorization = get_spotify_authorization_code())$id
 
   new_playlist <- spotifyr::create_playlist(
     user_id = user_id,
