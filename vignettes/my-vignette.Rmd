@@ -2,7 +2,7 @@
 title: "Getting Started with SpotifyAssistantR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting-Started-with-SpotifyAssistantR}
+  %\VignetteIndexEntry{Getting Started with SpotifyAssistantR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

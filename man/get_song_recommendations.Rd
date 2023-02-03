@@ -23,5 +23,7 @@ recommended songs.
 Prints a url link to the new playlist on Spotify.
 }
 \examples{
+\dontrun{
 get_song_recommendations()
+}
 }

@@ -2,16 +2,14 @@
 #'
 #' Returns the current user's top artists from Spotify.
 #'
-#' @param authorization The authorization token or code for the user's account.
-#'
 #' @return A data frame containing artist information.
 #' @importFrom spotifyr get_my_top_artists_or_tracks
 #' @export
 
-get_top_artists <- function(authorization = get_spotify_authorization_code()){
+get_top_artists <- function(){
   user_artists <- spotifyr::get_my_top_artists_or_tracks(limit=3,
                                                          time_range='short_term',
-                                                         authorization = authorization)
+                                                         authorization = get_spotify_authorization_code())
   user_artists
 }
 
@@ -44,7 +42,6 @@ get_genre_seeds <- function() {
 #'
 #' Returns a specified number of recommended songs from Spotify.
 #'
-#' @param authorization The authorization token or code for the user's account.
 #' @param seed_type Either 'artists' or 'genres'. Default is 'artists'.
 #' @param seeds A vector of artist or track ID's.
 #' @param num_songs The number of recommended songs to return.
@@ -53,7 +50,7 @@ get_genre_seeds <- function() {
 #' @return A vector of track uri's for identifying specific tracks.
 #' @importFrom spotifyr get_recommendations
 #' @export
-get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spotify_access_token()){
+get_new_songs <- function(seed_type, seeds, num_songs=10){
   stopifnot(num_songs <= 100)
   stopifnot(num_songs > 0)
 
@@ -61,12 +58,12 @@ get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spot
     rec_songs = spotifyr::get_recommendations(
       seed_artists = seeds,
       limit = num_songs,
-      authorization=authorization)
+      authorization=get_spotify_access_token())
   } else {
     rec_songs = spotifyr::get_recommendations(
       seed_genres = seeds,
       limit = num_songs,
-      authorization=authorization)
+      authorization=get_spotify_access_token())
   }
   new_songs <- rec_songs$id
   new_songs
@@ -83,7 +80,7 @@ get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spot
 #' @importFrom spotifyr get_my_profile
 #' @importFrom spotifyr create_playlist
 #' @export
-create_playlist <- function(playlist_name, authorization=get_spotify_authorization_code()){
+create_rec_playlist <- function(playlist_name, authorization=get_spotify_authorization_code()){
   if (is.null(playlist_name)) {
     current_date <- Sys.Date()
     playlist_name <- paste(current_date, "Recommended Songs")
@@ -120,7 +117,9 @@ create_playlist <- function(playlist_name, authorization=get_spotify_authorizati
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' get_song_recommendations()
+#' }
 get_song_recommendations <- function(playlist_name = NULL, num_songs = 10) {
   # Get the user's top artist information
   artists_info = get_top_artists()
@@ -140,7 +139,7 @@ get_song_recommendations <- function(playlist_name = NULL, num_songs = 10) {
   print(paste("Generating recommended songs based on", seed_type, "..."))
 
   # Create the new playlist on Spotify
-  new_playlist <- create_playlist(playlist_name)
+  new_playlist <- create_rec_playlist(playlist_name)
   playlist_url <- new_playlist[[1]]
   playlist_id <- new_playlist[[2]]
 
