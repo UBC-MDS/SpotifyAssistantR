@@ -73,25 +73,25 @@ get_new_songs <- function(seed_type, seeds, num_songs=10){
 #'
 #' Creates a new, empty playlist for the user on Spotify.
 #'
+#' @param authorization The authorization token or code for the user's account.
 #' @param playlist_name The name of the new playlist.
 #'
 #' @return A list containing the url and playlist id for the new playlist.
 #' @importFrom spotifyr get_my_profile
 #' @importFrom spotifyr create_playlist
-#'
 #' @export
-create_rec_playlist <- function(playlist_name){
+create_rec_playlist <- function(playlist_name, authorization=get_spotify_authorization_code()){
   if (is.null(playlist_name)) {
     current_date <- Sys.Date()
     playlist_name <- paste(current_date, "Recommended Songs")
   }
 
-  user_id <- spotifyr::get_my_profile(authorization = get_spotify_authorization_code())$id
+  user_id <- spotifyr::get_my_profile(authorization)$id
 
   new_playlist <- spotifyr::create_playlist(
     user_id = user_id,
     name=playlist_name,
-    authorization = get_spotify_authorization_code()
+    authorization = authorization
   )
   playlist_url <- new_playlist$external_urls$spotify
   playlist_id <- new_playlist$id

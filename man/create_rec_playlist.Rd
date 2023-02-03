@@ -4,10 +4,15 @@
 \alias{create_rec_playlist}
 \title{Create a playlist}
 \usage{
-create_rec_playlist(playlist_name)
+create_rec_playlist(
+  playlist_name,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{playlist_name}{The name of the new playlist.}
+
+\item{authorization}{The authorization token or code for the user's account.}
 }
 \value{
 A list containing the url and playlist id for the new playlist.
