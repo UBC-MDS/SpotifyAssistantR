@@ -4,10 +4,7 @@
 \alias{get_top_artists}
 \title{Get Top Artists}
 \usage{
-get_top_artists(authorization = get_spotify_authorization_code())
-}
-\arguments{
-\item{authorization}{The authorization token or code for the user's account.}
+get_top_artists()
 }
 \value{
 A data frame containing artist information.

@@ -4,12 +4,7 @@
 \alias{get_new_songs}
 \title{Get New Songs}
 \usage{
-get_new_songs(
-  seed_type,
-  seeds,
-  num_songs = 10,
-  authorization = get_spotify_access_token()
-)
+get_new_songs(seed_type, seeds, num_songs = 10)
 }
 \arguments{
 \item{seed_type}{Either 'artists' or 'genres'. Default is 'artists'.}
@@ -18,8 +13,6 @@ get_new_songs(
 
 \item{num_songs}{The number of recommended songs to return.
 Must be between 1 and 100 (inclusive).}
-
-\item{authorization}{The authorization token or code for the user's account.}
 }
 \value{
 A vector of track uri's for identifying specific tracks.
