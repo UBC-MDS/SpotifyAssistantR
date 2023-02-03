@@ -1,6 +1,3 @@
-# Sys.setenv(SPOTIFY_CLIENT_ID = '74652d1e1b664c34bacea50da044afc2')
-# Sys.setenv(SPOTIFY_CLIENT_SECRET = 'a76de7b1d254428e8200ea9c74ad3b77')
-
 #' Get Top Artists
 #'
 #' Returns the current user's top artists from Spotify.
@@ -18,14 +15,12 @@ get_top_artists <- function(authorization = get_spotify_authorization_code()){
   user_artists
 }
 
-
 #' Extract Artist ID
 #'
 #' @param artists A vector containing artist information.
 #'
 #' @return A vector of artist IDs.
 #' @export
-
 extract_artist_id <- function(artists){
   if (is.null(artists$id)) {
     return(list())
@@ -39,7 +34,6 @@ extract_artist_id <- function(artists){
 #'
 #' @return A list of 5 genre seeds
 #' @export
-
 get_genre_seeds <- function() {
   all_genres <- get_all_genres()
   genre_seeds <- sample(all_genres, 5, replace = FALSE)
@@ -59,7 +53,6 @@ get_genre_seeds <- function() {
 #' @return A vector of track uri's for identifying specific tracks.
 #' @importFrom spotifyr get_recommendations
 #' @export
-
 get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spotify_access_token()){
   stopifnot(num_songs <= 100)
   stopifnot(num_songs > 0)
@@ -79,7 +72,6 @@ get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spot
   new_songs
 }
 
-
 #' Create a playlist
 #'
 #' Creates a new, empty playlist for the user on Spotify.
@@ -91,7 +83,6 @@ get_new_songs <- function(seed_type, seeds, num_songs=10, authorization=get_spot
 #' @importFrom spotifyr get_my_profile
 #' @importFrom spotifyr create_playlist
 #' @export
-
 create_playlist <- function(playlist_name, authorization=get_spotify_authorization_code()){
   if (is.null(playlist_name)) {
     current_date <- Sys.Date()
@@ -131,8 +122,10 @@ create_playlist <- function(playlist_name, authorization=get_spotify_authorizati
 #' @examples
 #' get_song_recommendations()
 get_song_recommendations <- function(playlist_name = NULL, num_songs = 10) {
+  # Get the user's top artist information
   artists_info = get_top_artists()
 
+  # Check if the user does have top artist information, otherwise use genres instead
   if (length(artists_info) > 0) {
     seed_type <- 'artists'
     seeds <- extract_artist_id(artists_info)
@@ -141,16 +134,20 @@ get_song_recommendations <- function(playlist_name = NULL, num_songs = 10) {
     seeds <- get_genre_seeds()
   }
 
+  # Get a list of recommended songs
   recommended_songs <- get_new_songs(seed_type, seeds)
 
   print(paste("Generating recommended songs based on", seed_type, "..."))
 
+  # Create the new playlist on Spotify
   new_playlist <- create_playlist(playlist_name)
   playlist_url <- new_playlist[[1]]
   playlist_id <- new_playlist[[2]]
 
+  # Add the recommended songs to the new playlist
   spotifyr::add_tracks_to_playlist(playlist_id, recommended_songs)
 
+  # Paste the link to the new playlist
   print(paste("Here is a link to the new playlist:", playlist_url))
 
 }
