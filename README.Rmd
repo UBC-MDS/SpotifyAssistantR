@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # SpotifyAssistantR
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/UBC-MDS/SpotifyAssistantR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UBC-MDS/SpotifyAssistantR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 In this project, we aim to create a package in R that builds on top of the spotifyR 
