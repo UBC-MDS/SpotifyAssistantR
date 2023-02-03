@@ -4,13 +4,12 @@
 #'
 #' @return A data frame containing artist information.
 #' @importFrom spotifyr get_my_top_artists_or_tracks
-#' @importFrom spotifyr get_spotify_authorization_code
 #' @export
 
 get_top_artists <- function(){
   user_artists <- spotifyr::get_my_top_artists_or_tracks(limit=3,
                                                          time_range='short_term',
-                                                         authorization = spotifyr::get_spotify_authorization_code())
+                                                         authorization = get_spotify_authorization_code())
   user_artists
 }
 
@@ -50,7 +49,6 @@ get_genre_seeds <- function() {
 #'
 #' @return A vector of track uri's for identifying specific tracks.
 #' @importFrom spotifyr get_recommendations
-#' @importFrom spotifyr get_spotify_access_token
 #' @export
 get_new_songs <- function(seed_type, seeds, num_songs=10){
   stopifnot(num_songs <= 100)
@@ -60,12 +58,12 @@ get_new_songs <- function(seed_type, seeds, num_songs=10){
     rec_songs = spotifyr::get_recommendations(
       seed_artists = seeds,
       limit = num_songs,
-      authorization=spotifyr::get_spotify_access_token())
+      authorization=get_spotify_access_token())
   } else {
     rec_songs = spotifyr::get_recommendations(
       seed_genres = seeds,
       limit = num_songs,
-      authorization=spotifyr::get_spotify_access_token())
+      authorization=get_spotify_access_token())
   }
   new_songs <- rec_songs$id
   new_songs
@@ -80,7 +78,6 @@ get_new_songs <- function(seed_type, seeds, num_songs=10){
 #' @return A list containing the url and playlist id for the new playlist.
 #' @importFrom spotifyr get_my_profile
 #' @importFrom spotifyr create_playlist
-#' @importFrom spotifyr get_spotify_authorization_code()
 #'
 #' @export
 create_rec_playlist <- function(playlist_name){
@@ -94,7 +91,7 @@ create_rec_playlist <- function(playlist_name){
   new_playlist <- spotifyr::create_playlist(
     user_id = user_id,
     name=playlist_name,
-    authorization = spotifyr::get_spotify_authorization_code()
+    authorization = get_spotify_authorization_code()
   )
   playlist_url <- new_playlist$external_urls$spotify
   playlist_id <- new_playlist$id
