@@ -49,6 +49,7 @@ get_genre_seeds <- function() {
 #'
 #' @return A vector of track uri's for identifying specific tracks.
 #' @importFrom spotifyr get_recommendations
+#' @importFrom spotifyr get_spotify_access_token
 #' @export
 get_new_songs <- function(seed_type, seeds, num_songs=10){
   stopifnot(num_songs <= 100)
@@ -58,12 +59,12 @@ get_new_songs <- function(seed_type, seeds, num_songs=10){
     rec_songs = spotifyr::get_recommendations(
       seed_artists = seeds,
       limit = num_songs,
-      authorization=get_spotify_access_token())
+      authorization=spotifyr::get_spotify_access_token())
   } else {
     rec_songs = spotifyr::get_recommendations(
       seed_genres = seeds,
       limit = num_songs,
-      authorization=get_spotify_access_token())
+      authorization=spotifyr::get_spotify_access_token())
   }
   new_songs <- rec_songs$id
   new_songs
