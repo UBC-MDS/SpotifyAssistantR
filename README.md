@@ -19,10 +19,10 @@ spotifyR package to provide additional insights for Spotify users.
 
 ## Authors
 
--   Caroline Tang
--   Chester Wang
--   Jenit Jain
--   Julie Song
+- Caroline Tang
+- Chester Wang
+- Jenit Jain
+- Julie Song
 
 This package was originally created as part of the requirements of
 DSCI524 (Collaborative Software Development), a course in the Master of
@@ -42,9 +42,9 @@ devtools::install_github('UBC-MDS/SpotifyAssistantR')
 
 R (\>=4.1.0)
 
--   spotifyr (2.2.4)
+- spotifyr (2.2.4)
 
--   dplyr
+- dplyr
 
 ## Environment Setup
 
@@ -141,8 +141,10 @@ get_playlists_songs(playlist_names = c('bops', 'night drives'))
 #   [2] "Salt"                                                     
 #   [3] "Don't Start Now"
 
-# Get the user's top listening genres
+# Get the top genres of music among the tracks in "Your Music" library.
 get_users_top_genres()
+
+# [1] "rap"     "pop"     "hip hop" "pop rap" "trap"
 ```
 
 For more detailed usage information, please [see

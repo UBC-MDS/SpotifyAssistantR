@@ -71,10 +71,11 @@ Other continents that can be specified are: 'Asia', 'Europe', 'Oceania', and 'Af
 number of albums to be returned can also be increased by increasing the `limit`.
 
 ## Getting User Top Genres
-The following function will return the user's top genres based on their listening trends:
+The following function will return the user's top genres based on their listening trends and among the tracks in "Your Music" library.
 
 ```{r, eval=FALSE}
 get_users_top_genres()
+# [1] "rap"     "pop"     "hip hop" "pop rap" "trap"
 ```
 
 ## Getting User Playlists and Tracks
