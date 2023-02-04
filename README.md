@@ -116,7 +116,32 @@ get_new_releases_by_continent(country_code='Asia', n_limit=3)
 get_song_recommendations()
 # [1] "Generating recommended songs based on artists ..."
 # [1] "Here is a link to the new playlist: https://open.spotify.com/playlist/2CB2JEtHcraGS0GeEkzEUW"
+
+# This is a simple example to get song titles from some of your saved playlists:
+
+# for one playlist
+get_playlists_songs(playlist_names = 'bops')
+
+# [1] "Getting songs for bops"
+# $bops
+#   [1] "hot girl bummer"                                          
+#   [2] "Salt"                                                     
+#   [3] "Don't Start Now"  
+
+# for more than one playlist
+get_playlists_songs(playlist_names = c('bops', 'night drives'))
+
+# [1] "Getting songs for night drives"
+# [1] "Getting songs for bops"
+# $`night drives`
+#  [1] "Sunset (2019 Y.Nakamura Remastering)"               
+#  [2] "Plastic Love"
+# $bops
+#   [1] "hot girl bummer"                                          
+#   [2] "Salt"                                                     
+#   [3] "Don't Start Now"
 ```
 
 For more detailed usage information, please [see
-here](https://ubc-mds.github.io/SpotifyAssistantR/)
+here](https://ubc-mds.github.io/SpotifyAssistantR/articles/my-vignette.html)
+

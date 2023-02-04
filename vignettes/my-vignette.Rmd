@@ -88,8 +88,24 @@ Playlists can also be specified using the `playlist_names` argument, like this:
 # for one playlist
 get_playlists_songs(playlist_names = 'bops')
 
+# [1] "Getting songs for bops"
+# $bops
+#   [1] "hot girl bummer"                                          
+#   [2] "Salt"                                                     
+#   [3] "Don't Start Now"  
+
 # for more than one playlist
 get_playlists_songs(playlist_names = c('bops', 'night drives'))
+
+# [1] "Getting songs for night drives"
+# [1] "Getting songs for bops"
+# $`night drives`
+#  [1] "Sunset (2019 Y.Nakamura Remastering)"               
+#  [2] "Plastic Love"
+# $bops
+#   [1] "hot girl bummer"                                          
+#   [2] "Salt"                                                     
+#   [3] "Don't Start Now"
 ```
 
 
