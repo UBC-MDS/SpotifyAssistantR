@@ -37,6 +37,7 @@ get_all_playlists <- function(authorization) {
 #' @param all_playlists a dataframe containing names and IDs of playlists
 #' @param playlist_names a character vector containing the playlist names, defaults to all
 #' @return dataframe containing the names and IDs of playlists
+#' @importFrom rlang .data
 #' @importFrom dplyr filter
 #' @importFrom dplyr select
 #' @export
