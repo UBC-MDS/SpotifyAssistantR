@@ -131,8 +131,8 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>SPOTIFY_CLIENT_SECRET <span class="op">=</span> <span class="st">'xxxxxxxxxxxxxxxxxxxxx'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Get new releases in Asia:</span></span>
-<span><span class="fu"><a href="reference/get_new_releases_by_continent.html">get_new_releases_by_continent</a></span><span class="op">(</span>country_code<span class="op">=</span><span class="st">'Asia'</span>, n_limit<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
-<span></span>
+<span><span class="fu"><a href="reference/get_new_releases_by_continent.html">get_new_releases_by_continent</a></span><span class="op">(</span>continent <span class="op">=</span> <span class="st">'Americas'</span>, n_limit<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co"># -- Loading new releases in  Americas , this may take a while... </span></span>
 <span><span class="co"># [[1]]</span></span>
 <span><span class="co"># [1] "Renegade"</span></span>
 <span><span class="co"># </span></span>
@@ -169,7 +169,10 @@
 <span><span class="co"># $bops</span></span>
 <span><span class="co">#   [1] "hot girl bummer"                                          </span></span>
 <span><span class="co">#   [2] "Salt"                                                     </span></span>
-<span><span class="co">#   [3] "Don't Start Now"</span></span></code></pre></div>
+<span><span class="co">#   [3] "Don't Start Now"</span></span>
+<span></span>
+<span><span class="co"># Get the user's top listening genres</span></span>
+<span><span class="fu"><a href="reference/get_users_top_genres.html">get_users_top_genres</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>For more detailed usage information, please <a href="https://ubc-mds.github.io/SpotifyAssistantR/articles/my-vignette.html">see here</a></p>
 </div>
 </div>
