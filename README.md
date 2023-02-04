@@ -44,6 +44,8 @@ R (\>=4.1.0)
 
 - dplyr
 
+- rlang
+
 ## Environment Setup
 
 Using this package requires Spotify and Spotify Developer accounts,
