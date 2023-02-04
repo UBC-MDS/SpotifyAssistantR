@@ -19,10 +19,10 @@ spotifyR package to provide additional insights for Spotify users.
 
 ## Authors
 
-- Caroline Tang
-- Chester Wang
-- Jenit Jain
-- Julie Song
+-   Caroline Tang
+-   Chester Wang
+-   Jenit Jain
+-   Julie Song
 
 This package was originally created as part of the requirements of
 DSCI524 (Collaborative Software Development), a course in the Master of
@@ -42,9 +42,9 @@ devtools::install_github('UBC-MDS/SpotifyAssistantR')
 
 R (\>=4.1.0)
 
-- spotifyr (2.2.4)
+-   spotifyr (2.2.4)
 
-- dplyr
+-   dplyr
 
 ## Environment Setup
 
@@ -92,8 +92,7 @@ may need to rotate the client secret and re-assign
 
 ## Usage
 
-This is a basic example which shows you how to get the new releases in
-Asia:
+These are some basic usage examples for each of the core functions:
 
 ``` r
 library(SpotifyAssistantR)
@@ -101,6 +100,7 @@ library(SpotifyAssistantR)
 Sys.setenv(SPOTIFY_CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx')
 Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 
+# Get new releases in Asia:
 get_new_releases_by_continent(country_code='Asia', n_limit=3)
 
 # [[1]]
@@ -111,12 +111,14 @@ get_new_releases_by_continent(country_code='Asia', n_limit=3)
 # 
 # [[3]]
 # [1] "Dreaming of You"
-```
 
-This is a simple example to get song titles from some of your saved
-playlists:
+# Get a new playlist on your Spotify account filled with recommended songs based on your top artists:
+get_song_recommendations()
+# [1] "Generating recommended songs based on artists ..."
+# [1] "Here is a link to the new playlist: https://open.spotify.com/playlist/2CB2JEtHcraGS0GeEkzEUW"
 
-``` r
+# This is a simple example to get song titles from some of your saved playlists:
+
 # for one playlist
 get_playlists_songs(playlist_names = 'bops')
 
@@ -139,3 +141,7 @@ get_playlists_songs(playlist_names = c('bops', 'night drives'))
 #   [2] "Salt"                                                     
 #   [3] "Don't Start Now"
 ```
+
+For more detailed usage information, please [see
+here](https://ubc-mds.github.io/SpotifyAssistantR/articles/my-vignette.html)
+
