@@ -41,7 +41,6 @@ get_all_artists <- function(saved_tracks){
   }
 
   ids <- unique(artists)
-  print(length(ids))
   for(id in ids){
     artist_information[length(artist_information)+1] <- list(spotifyr::get_artist(id))
   }
@@ -95,4 +94,6 @@ get_users_top_genres <- function() {
 
   # Get the top genres of the artists
   genres <- get_top_genres(artist_information)
+
+  genres
 }
