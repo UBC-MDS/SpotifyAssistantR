@@ -49,7 +49,14 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/UBC-MDS/SpotifyAssistantR/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -64,14 +71,14 @@
       <img src="" class="logo" alt=""><h1>Getting Started with SpotifyAssistantR</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/UBC-MDS/SpotifyAssistantR/blob/HEAD/vignettes/my-vignette.Rmd" class="external-link"><code>vignettes/my-vignette.Rmd</code></a></small>
       <div class="d-none name"><code>my-vignette.Rmd</code></div>
     </div>
 
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ubc-mds.github.io/SpotifyAssistantR/">SpotifyAssistantR</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UBC-MDS/SpotifyAssistantR" class="external-link">SpotifyAssistantR</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: spotifyr</span></span>
 <span><span class="co">#&gt; Loading required package: dplyr</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -165,8 +172,24 @@ argument, like this:</p>
 <code class="sourceCode R"><span><span class="co"># for one playlist</span></span>
 <span><span class="fu"><a href="../reference/get_playlists_songs.html">get_playlists_songs</a></span><span class="op">(</span>playlist_names <span class="op">=</span> <span class="st">'bops'</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># [1] "Getting songs for bops"</span></span>
+<span><span class="co"># $bops</span></span>
+<span><span class="co">#   [1] "hot girl bummer"                                          </span></span>
+<span><span class="co">#   [2] "Salt"                                                     </span></span>
+<span><span class="co">#   [3] "Don't Start Now"  </span></span>
+<span></span>
 <span><span class="co"># for more than one playlist</span></span>
-<span><span class="fu"><a href="../reference/get_playlists_songs.html">get_playlists_songs</a></span><span class="op">(</span>playlist_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'bops'</span>, <span class="st">'night drives'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/get_playlists_songs.html">get_playlists_songs</a></span><span class="op">(</span>playlist_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'bops'</span>, <span class="st">'night drives'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># [1] "Getting songs for night drives"</span></span>
+<span><span class="co"># [1] "Getting songs for bops"</span></span>
+<span><span class="co"># $`night drives`</span></span>
+<span><span class="co">#  [1] "Sunset (2019 Y.Nakamura Remastering)"               </span></span>
+<span><span class="co">#  [2] "Plastic Love"</span></span>
+<span><span class="co"># $bops</span></span>
+<span><span class="co">#   [1] "hot girl bummer"                                          </span></span>
+<span><span class="co">#   [2] "Salt"                                                     </span></span>
+<span><span class="co">#   [3] "Don't Start Now"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-user-song-recommendations">Getting User Song Recommendations<a class="anchor" aria-label="anchor" href="#getting-user-song-recommendations"></a>
