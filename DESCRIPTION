@@ -24,4 +24,3 @@ Suggests:
     covr
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://ubc-mds.github.io/SpotifyAssistantR/
