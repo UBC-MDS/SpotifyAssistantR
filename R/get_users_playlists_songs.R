@@ -120,7 +120,7 @@ get_playlists_songs <- function(playlist_names = NULL) {
   all_playlists <- get_all_playlists(authorization)
 
   # filter playlists (rows)
-  filtered_playlists <- filter_playlists(all_playlists, playlist_names = NULL)
+  filtered_playlists <- filter_playlists(all_playlists, playlist_names = playlist_names)
 
   if (nrow(filtered_playlists) == 0) {
     stop('No playlists to get songs for.')
