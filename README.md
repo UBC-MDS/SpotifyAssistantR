@@ -100,8 +100,8 @@ library(SpotifyAssistantR)
 Sys.setenv(SPOTIFY_CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx')
 Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 
-# Get new releases in Asia:
-get_new_releases_by_continent(country_code='Asia', n_limit=3)
+# Get new releases in the Americas:
+get_new_releases_by_continent(continent = 'Americas', n_limit=3)
 
 # [[1]]
 # [1] "Renegade"
@@ -140,8 +140,10 @@ get_playlists_songs(playlist_names = c('bops', 'night drives'))
 #   [1] "hot girl bummer"                                          
 #   [2] "Salt"                                                     
 #   [3] "Don't Start Now"
+
+# Get the user's top genres
+get_users_top_genres()
 ```
 
 For more detailed usage information, please [see
 here](https://ubc-mds.github.io/SpotifyAssistantR/articles/my-vignette.html)
-

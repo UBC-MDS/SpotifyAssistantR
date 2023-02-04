@@ -63,6 +63,9 @@ The following function will return one album from the Americas (i.e. North and S
 
 ```{r, eval=FALSE}
 get_new_releases_by_continent(continent = 'Americas', limit = 1)
+# -- Loading new releases in  Americas , this may take a while... 
+# [1] "CRASH"
+
 ```
 
 Other continents that can be specified are: 'Asia', 'Europe', 'Oceania', and 'Africa'. The
@@ -115,5 +118,7 @@ The user can also specify the number of songs to return in the playlist using th
 
 ```{r, eval=FALSE}
 get_song_recommendations()
+# [1] "Generating recommended songs based on artists ..."
+# [1] "Here is a link to the new playlist: https://open.spotify.com/playlist/2CB2JEtHcraGS0GeEkzEUW"
 ```
 
