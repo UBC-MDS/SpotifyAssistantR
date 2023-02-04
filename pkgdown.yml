@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   my-vignette: my-vignette.html
-last_built: 2023-02-04T23:24Z
+last_built: 2023-02-04T23:52Z
 urls:
   reference: https://ubc-mds.github.io/SpotifyAssistantR/reference
   article: https://ubc-mds.github.io/SpotifyAssistantR/articles
