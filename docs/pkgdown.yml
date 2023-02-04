@@ -1,7 +1,10 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: '2.18'
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   my-vignette: my-vignette.html
-last_built: 2023-02-04T09:38Z
+last_built: 2023-02-04T21:55Z
+urls:
+  reference: https://ubc-mds.github.io/SpotifyAssistantR/reference
+  article: https://ubc-mds.github.io/SpotifyAssistantR/articles
 
